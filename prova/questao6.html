@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carro</title>
+</head>
+<body>
+    <h1>Carro</h1>
+    <label>Marca: <input type="text" id="marca"></label><br>
+    <label>Modelo: <input type="text" id="modelo"></label><br>
+    <label>Acelerar: <input type="number" id="acelerar" step="1"></label><br>
+    <button onclick="acelerar()">Acelerar</button><br>
+    <button onclick="frear()">Frear</button><br><br>
+    <div id="velocidade"></div>
+
+    <script src="questao6.js"></script>
+    <script>
+        let carro;
+
+        function acelerar() {
+            const marca = document.getElementById('marca').value;
+            const modelo = document.getElementById('modelo').value;
+            const aceleracao = parseInt(document.getElementById('acelerar').value);
+
+            if (!carro) {
+                carro = new Carro(marca, modelo);
+            }
+
+            carro.acelerar(aceleracao);
+
+            document.getElementById('velocidade').textContent = `Velocidade atual: ${carro.exibirVelocidadeAtual()} km/h`;
+        }
+
+        function frear() {
+            if (carro) {
+                carro.frear();
+                document.getElementById('velocidade').textContent = `Velocidade atual: ${carro.exibirVelocidadeAtual()} km/h`;
+            }
+        }
+    </script>
+</body>
+</html>

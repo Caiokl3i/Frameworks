@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Círculo</title>
+</head>
+<body>
+    <h1>Círculo</h1>
+    <label for="raio">Raio do círculo:</label>
+    <input type="text" id="raio">
+    <button onclick="calcular()">Calcular</button>
+    <div id="area"></div>
+    <div id="perimetro"></div>
+    
+    <script src="questao1.js"></script>
+
+    <script>
+        function calcular() {
+            const raio = document.getElementById('raio').value;
+            const circulo = new Circulo(parseFloat(raio));
+            const area = circulo.calcularArea();
+            const perimetro = circulo.calcularPerimetro();
+            document.getElementById('area').textContent = `Área: ${area.toFixed(2)}`;
+            document.getElementById('perimetro').textContent = `Perímetro: ${perimetro.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

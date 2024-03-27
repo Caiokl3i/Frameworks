@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudante</title>
+</head>
+<body>
+    <h1>Estudante</h1>
+    <label>Matrícula: <input type="text" id="matricula"></label><br>
+    <label>Nome: <input type="text" id="nome"></label><br>
+    <label>Nota 1: <input type="number" id="nota1" step="0.01"></label><br>
+    <label>Nota 2: <input type="number" id="nota2" step="0.01"></label><br>
+    <button onclick="calcularMedia()">Calcular Média</button><br><br>
+    <div id="media"></div>
+    <div id="situacao"></div>
+
+    <script src="questao4.js"></script>
+    <script>
+        function calcularMedia() {
+            const matricula = document.getElementById('matricula').value;
+            const nome = document.getElementById('nome').value;
+            const nota1 = parseFloat(document.getElementById('nota1').value);
+            const nota2 = parseFloat(document.getElementById('nota2').value);
+
+            const estudante = new Estudante(matricula, nome, nota1, nota2);
+
+            const media = estudante.calcMedia();
+            const situacao = estudante.verifSituacao();
+
+            document.getElementById('media').textContent = `Média: ${media.toFixed(2)}`;
+            document.getElementById('situacao').textContent = `Situação: ${situacao}`;
+        }
+    </script>
+</body>
+</html>

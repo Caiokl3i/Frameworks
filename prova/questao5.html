@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+</head>
+<body>
+    <h1>Produto</h1>
+    <label>Nome: <input type="text" id="nome"></label><br>
+    <label>Preço: <input type="number" id="preco" step="0.01"></label><br>
+    <label>Quantidade em Estoque: <input type="number" id="qtdEstoque"></label><br>
+    <button onclick="calcularTotal()">Calcular Total</button><br><br>
+    <div id="total"></div>
+    <div id="disponibilidade"></div>
+
+    <script src="questao5.js"></script>
+    <script>
+        function calcularTotal() {
+            const nome = document.getElementById('nome').value;
+            const preco = parseFloat(document.getElementById('preco').value);
+            const qtdEstoque = parseInt(document.getElementById('qtdEstoque').value);
+
+            const produto = new Produto(nome, preco, qtdEstoque);
+
+            const total = produto.calcTotal();
+            const disponibilidade = produto.verifDisponibilidade() ? "Disponível" : "Indisponível";
+
+            document.getElementById('total').textContent = `Total: R$ ${total.toFixed(2)}`;
+            document.getElementById('disponibilidade').textContent = `Disponibilidade: ${disponibilidade}`;
+        }
+    </script>
+</body>
+</html>

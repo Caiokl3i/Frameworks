@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livro</title>
+</head>
+<body>
+    <h1>Livro</h1>
+    <label>Título: <input type="text" id="titulo"></label><br>
+    <label>Autor: <input type="text" id="autor"></label><br>
+    <label>Número de Páginas: <input type="number" id="numPaginas" step="1"></label><br>
+    <button onclick="emprestar()">Emprestar Livro</button><br>
+    <button onclick="devolver()">Devolver Livro</button><br><br>
+    <div id="disponibilidade"></div>
+
+    <script src="questao7.js"></script>
+    <script>
+        let livro;
+
+        function emprestar() {
+            const titulo = document.getElementById('titulo').value;
+            const autor = document.getElementById('autor').value;
+            const numPaginas = parseInt(document.getElementById('numPaginas').value);
+
+            if (!livro) {
+                livro = new Livro(titulo, autor, numPaginas);
+            }
+
+            const emprestado = livro.emprestarLivro();
+            const disponibilidade = livro.verificarDisponibilidade();
+
+            document.getElementById('disponibilidade').textContent = `Disponibilidade: ${disponibilidade}`;
+
+            if (emprestado) {
+                alert("Livro emprestado com sucesso!");
+            } else {
+                alert("Livro indisponível para empréstimo!");
+            }
+        }
+
+        function devolver() {
+            if (livro) {
+                livro.devolverLivro();
+                const disponibilidade = livro.verificarDisponibilidade();
+                document.getElementById('disponibilidade').textContent = `Disponibilidade: ${disponibilidade}`;
+                alert("Livro devolvido com sucesso!");
+            }
+        }
+    </script>
+</body>
+</html>

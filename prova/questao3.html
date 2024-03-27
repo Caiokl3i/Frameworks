@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retângulo</title>
+</head>
+<body>
+    <h1>Retângulo</h1>
+    <label>Largura: <input type="number" id="largura"></label><br>
+    <label>Altura: <input type="number" id="altura"></label><br>
+    <button onclick="calcular()">Calcular</button><br><br>
+    <div id="area"></div>
+    <div id="perimetro"></div>
+
+    <script src="questao3.js"></script>
+    <script>
+        function calcular() {
+            const largura = parseFloat(document.getElementById('largura').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+
+            const retangulo = new Retangulo(largura, altura);
+
+            const area = retangulo.calcArea();
+            const perimetro = retangulo.calcPerimetro();
+
+            document.getElementById('area').textContent = `Área: ${area}`;
+            document.getElementById('perimetro').textContent = `Perímetro: ${perimetro}`;
+        }
+    </script>
+</body>
+</html>
