@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="Pessoa.js"></script>
+    <title>Exemplo classe Pessoa</title>
+</head>
+<body>
+      CPF: <input type="text" id="cpf" name="cpf"> <br>
+      NOME: <input type="text" id="nome" name="nome"> <br>
+      EMAIL: <input type="text" id="email" name="email"> <br>
+    
+      <button onclick="criarObjeto();">Instanciar Objeto</button>
+
+    <div style="min-height: 50px;">
+
+    </div>  
+    <h1>Resultados</h1>
+    <div id="resultado">
+        
+    </div>
+    <div>
+        <button onclick="visualizarObjeto();">Visualizar objeto</button>
+    </div>
+
+
+    <script>
+        function criarObjeto(){
+
+        let cpf = document.getElementById('cpf').value;
+        let nome = document.getElementById('nome').value;
+        let email = document.getElementById('email').value;
+
+        obj_pessoa_01 = new Pessoa(cpf, nome, email)
+        }
+
+        function visualizarObjeto(){
+            document.getElementById('resultado').innerHTML="<p>CPF: " + obj_pessoa_01.getCpf() + "</p><p> NOME: " + obj_pessoa_01.getNome() +
+                 "</p><p> E-mail: " +  obj_pessoa_01.getEmail() + "</p>";
+
+
+        }
+    </script>
+
+</body>
+</html>

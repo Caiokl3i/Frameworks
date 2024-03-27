@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="questao1.js"></script>
     <title>Círculo</title>
 </head>
 <body>
-    <h1>Círculo</h1>
-    <label for="raio">Raio do círculo:</label>
-    <input type="text" id="raio">
-    <button onclick="calcular()">Calcular</button>
-    <div id="area"></div>
-    <div id="perimetro"></div>
-    
-    <script src="questao1.js"></script>
+
+    RAIO: <input type="number" id="raio" name="raio">
+    <button onclick="calcularArea()">Calcular área</button>
+    <button onclick="calcularPerimetro()">Calcular perímetro</button>
+
+    <h3>Resultado</h3>
+    <div id="resultado">
+    </div>
 
     <script>
-        function calcular() {
-            const raio = document.getElementById('raio').value;
-            const circulo = new Circulo(parseFloat(raio));
-            const area = circulo.calcularArea();
-            const perimetro = circulo.calcularPerimetro();
-            document.getElementById('area').textContent = `Área: ${area.toFixed(2)}`;
-            document.getElementById('perimetro').textContent = `Perímetro: ${perimetro.toFixed(2)}`;
+        function calcularArea() {
+            let raio = document.getElementById("raio").value;
+            let circulo = new Circulo(raio);
+            let area = circulo.calcularArea();
+            document.getElementById("resultado").innerHTML = "A área do círculo é: " + area;
+        }
+
+        function calcularPerimetro() {
+            let raio = document.getElementById("raio").value;
+            let circulo = new Circulo(raio);
+            let perimetro = circulo.calcularPerimetro();
+            document.getElementById("resultado").innerHTML = "O perímetro do círculo é: " + perimetro;
         }
     </script>
+
 </body>
 </html>
