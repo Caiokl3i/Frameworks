@@ -1,8 +1,8 @@
 class Carro {
-    constructor(marca, modelo) {
+    constructor(marca, modelo, velocidade) {
         this.marca = marca;
         this.modelo = modelo;
-        this.velocidadeAtual = 0;
+        this.velocidade = velocidade;
     }
     getMarca() {
         return this.marca;
@@ -16,13 +16,13 @@ class Carro {
     setModelo(modelo) {
         this.modelo = modelo;
     }
-    acelerar(velocidadeAtual) {
-        this.velocidadeAtual += velocidadeAtual;
+    acelerar() {
+        return this.velocidade;
     }
     frear() {
-        this.velocidadeAtual = 0; 
+        this.velocidade = 0; 
     }
-    exibirVelocidadeAtual() {
-        return this.velocidadeAtual;
+    exibirVelocidade() {
+        return this.velocidade;
     }
 }

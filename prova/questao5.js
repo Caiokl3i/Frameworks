@@ -1,9 +1,8 @@
 class Produto {
-
-    constructor(nome, preco, qtdEstoque) {
+    constructor(nome, preco, quantidade) {
     this.nome = nome;
     this.preco = preco;
-    this.qtdEstoque = qtdEstoque;
+    this.quantidade = quantidade;
     }
     getNome() {
     return this.nome;
@@ -17,16 +16,20 @@ class Produto {
     setPreco(preco) {
     this.preco = preco;
     }
-    getQtdEstoque() {
-    return this.qtdEstoque;
+    getquantidade() {
+    return this.quantidade;
     }
-    setQtdEstoque(qtdEstoque) {
-    this.qtdEstoque = qtdEstoque;
+    setquantidade(quantidade) {
+    this.quantidade = quantidade;
     }
     calcTotal(){
-    return this.preco * this.qtdEstoque;
+    return this.preco * this.quantidade;
     }
-    verifDisponibilidade(){
-    return this.qtdEstoque > 0;
+    verifDisponibilidade() {
+        if (this.quantidade > 0) {
+            return "O produto " + this.nome + " está disponível.";
+        } else {
+            return "O produto " + this.nome + " não está disponível.";
+        }
     }
 }

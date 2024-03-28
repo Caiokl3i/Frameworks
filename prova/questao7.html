@@ -1,52 +1,51 @@
+<!-- Arquivo HTML (index.html) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="questao7.js"></script>
     <title>Livro</title>
 </head>
 <body>
-    <h1>Livro</h1>
-    <label>Título: <input type="text" id="titulo"></label><br>
-    <label>Autor: <input type="text" id="autor"></label><br>
-    <label>Número de Páginas: <input type="number" id="numPaginas" step="1"></label><br>
-    <button onclick="emprestar()">Emprestar Livro</button><br>
-    <button onclick="devolver()">Devolver Livro</button><br><br>
-    <div id="disponibilidade"></div>
 
-    <script src="questao7.js"></script>
+    TITULO: <input type="text" id="titulo" name="titulo">
+    AUTOR: <input type="text" id="autor" name="autor">
+    NUMERO DE PAGINAS: <input type="text" id="nPaginas" name="nPaginas">
+    <button onclick="emprestarLivro()">Emprestar Livro</button>
+    <button onclick="devolverLivro()">Devolver Livro</button>
+    <button onclick="verificarDisponibilidade()">Verificar disponibilidade</button>
+
+    <h3>Resultado</h3>
+    <div id="resultado">
+    </div>
+
     <script>
-        let livro;
-
-        function emprestar() {
-            const titulo = document.getElementById('titulo').value;
-            const autor = document.getElementById('autor').value;
-            const numPaginas = parseInt(document.getElementById('numPaginas').value);
-
-            if (!livro) {
-                livro = new Livro(titulo, autor, numPaginas);
-            }
-
-            const emprestado = livro.emprestarLivro();
-            const disponibilidade = livro.verificarDisponibilidade();
-
-            document.getElementById('disponibilidade').textContent = `Disponibilidade: ${disponibilidade}`;
-
-            if (emprestado) {
-                alert("Livro emprestado com sucesso!");
-            } else {
-                alert("Livro indisponível para empréstimo!");
-            }
+        function emprestarLivro() {
+            let titulo = document.getElementById("titulo").value;
+            let autor = document.getElementById("autor").value;
+            let nPaginas = document.getElementById("nPaginas").value;
+            let livro = new Livro(titulo, autor, nPaginas);
+            let emprestado = livro.emprestarLivro();
+            document.getElementById("resultado").innerHTML = emprestado;
         }
 
-        function devolver() {
-            if (livro) {
-                livro.devolverLivro();
-                const disponibilidade = livro.verificarDisponibilidade();
-                document.getElementById('disponibilidade').textContent = `Disponibilidade: ${disponibilidade}`;
-                alert("Livro devolvido com sucesso!");
-            }
+        function devolverLivro() {
+            let titulo = document.getElementById("titulo").value;
+            let autor = document.getElementById("autor").value;
+            let nPaginas = document.getElementById("nPaginas").value;
+            let livro = new Livro(titulo, autor, nPaginas);
+            let devolvido = livro.devolverLivro();
+            document.getElementById("resultado").innerHTML = devolvido;
+        }
+
+        function verificarDisponibilidade() {
+            let titulo = document.getElementById("titulo").value;
+            let autor = document.getElementById("autor").value;
+            let nPaginas = document.getElementById("nPaginas").value;
+            let livro = new Livro(titulo, autor, nPaginas);
+            let disponibilidade = livro.verificarDisponibilidade();
+            document.getElementById("resultado").innerHTML = disponibilidade;
         }
     </script>
+
 </body>
 </html>

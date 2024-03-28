@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="questao5.js"></script>
     <title>Produto</title>
 </head>
 <body>
-    <h1>Produto</h1>
-    <label>Nome: <input type="text" id="nome"></label><br>
-    <label>Preço: <input type="number" id="preco" step="0.01"></label><br>
-    <label>Quantidade em Estoque: <input type="number" id="qtdEstoque"></label><br>
-    <button onclick="calcularTotal()">Calcular Total</button><br><br>
-    <div id="total"></div>
-    <div id="disponibilidade"></div>
 
-    <script src="questao5.js"></script>
+    NOME: <input type="text" id="nome" name="nome">
+    PREÇO: <input type="text" id="preco" name="preco">
+    QUANTIDADE EM ESTOQUE: <input type="text" id="quantidade" name="ququantidade">
+    <button onclick="calcTotal()">CALCULAR VALOR TOTAL</button>
+    <button onclick="verifDisponibilidade()">VERIFICAR DISPONIBILIDADE</button>
+
+    <h3>Resultado</h3>
+    <div id="resultado">
+    </div>
+
     <script>
-        function calcularTotal() {
-            const nome = document.getElementById('nome').value;
-            const preco = parseFloat(document.getElementById('preco').value);
-            const qtdEstoque = parseInt(document.getElementById('qtdEstoque').value);
+        function calcTotal() {
+            let nome = document.getElementById("nome").value;
+            let preco = document.getElementById("preco").value;
+            let quantidade = document.getElementById("quantidade").value; 
+            let produto = new Produto(nome, preco, quantidade); 
+            let total = produto.calcTotal();
+            document.getElementById("resultado").innerHTML = "O valor total é " + total;
+        }
 
-            const produto = new Produto(nome, preco, qtdEstoque);
-
-            const total = produto.calcTotal();
-            const disponibilidade = produto.verifDisponibilidade() ? "Disponível" : "Indisponível";
-
-            document.getElementById('total').textContent = `Total: R$ ${total.toFixed(2)}`;
-            document.getElementById('disponibilidade').textContent = `Disponibilidade: ${disponibilidade}`;
+        function verifDisponibilidade() {
+            let nome = document.getElementById("nome").value;
+            let preco = document.getElementById("preco").value;
+            let quantidade = document.getElementById("quantidade").value;
+            let produto = new Produto(nome, preco, quantidade);
+            let disponibilidade = produto.verifDisponibilidade();
+            document.getElementById("resultado").innerHTML = disponibilidade;
         }
     </script>
+
+
+
 </body>
 </html>

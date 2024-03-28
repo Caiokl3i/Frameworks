@@ -1,33 +1,41 @@
 class ContaBancaria {
-    constructor(idConta, nomeTitular, saldo)
-    {
-    this.idConta = idConta;
-    this.nomeTitular = nomeTitular;
-    this.saldo = saldo;
+    constructor(idConta, nomeTitular, saldo) {
+        this.idConta = idConta;
+        this.nomeTitular = nomeTitular;
+        this.saldo = saldo;
     }
+
     getidConta() {
-    return this.idConta;
+        return this.idConta;
     }
+
     setidConta(idConta) {
-    this.idConta = idConta;
+        this.idConta = idConta;
     }
+
     getnomeTitular() {
-    return this.nomeTitular;
-    
+        return this.nomeTitular;
     }
+
     setnomeTitular(nomeTitular) {
-    this.nomeTitular = nomeTitular;
+        this.nomeTitular = nomeTitular;
     }
+
     getsaldo() {
-    return this.saldo;
+        return this.saldo;
     }
+
     setsaldo(saldo) {
-    this.saldo = saldo;
+        this.saldo = saldo;
     }
+
     realizarDepositar(valor) {
-    this.saldo += valor;
+        this.saldo += valor;
+        return this.saldo;
     }
+
     realizarSaque(valor) {
-    this.saldo -= valor;
+        this.saldo -= valor;
+        return this.saldo;
     }
-    }
+}

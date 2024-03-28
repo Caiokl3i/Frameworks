@@ -20,6 +20,6 @@ class Retangulo {
     return this.largura * this.altura;
     }
     calcPerimetro() {
-    return 2 * (this.largura + this.altura);
+    return 2 * this.largura + 2 * this.altura;
     }
     }

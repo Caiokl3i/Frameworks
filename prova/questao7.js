@@ -1,9 +1,9 @@
 class Livro {
-    constructor(titulo, autor, numPaginas) {
+    constructor(titulo, autor, nPaginas) {
         this.titulo = titulo;
         this.autor = autor;
-        this.numPaginas = numPaginas;
-        this.disponivel = true;
+        this.nPaginas = nPaginas;
+        this.emprestado = false;
     }
     getTitulo() {
         return this.titulo;
@@ -17,24 +17,35 @@ class Livro {
     setAutor(autor) {
         this.autor = autor;
     }
-    getNumPaginas() {
-        return this.numPaginas;
+    getnPaginas() {
+        return this.nPaginas;
     }
-    setNumPaginas(numPaginas) {
-        this.numPaginas = numPaginas;
+    setnPaginas(nPaginas) {
+        this.nPaginas = nPaginas;
     }
     emprestarLivro() {
-        if (this.disponivel) {
-            this.disponivel = false;
-            return true;
+        if (!this.emprestado) {
+            this.emprestado = true;
+            return "Livro emprestado com sucesso!";
         } else {
-            return false;
+            return "Livro ja esta emprestado!";
         }
     }
+    
     devolverLivro() {
-        this.disponivel = true;
+        if (this.emprestado) {
+            this.emprestado = false;
+            return "Livro devolvido com sucesso!";
+        } else {
+            return "Livro ja esta disponavel!";
+        }
     }
+    
     verificarDisponibilidade() {
-        return this.disponivel ? "Disponível" : "Indisponível";
+        if (this.emprestado) {
+            return "Livro emprestado";
+        } else {
+            return "Livro disponavel";
+        }
     }
 }

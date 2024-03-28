@@ -1,55 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="questao2.js"></script>
     <title>Conta Bancária</title>
 </head>
 <body>
-    <h1>Conta Bancária</h1>
-    <label>ID da Conta: <input type="text" id="idConta"></label><br>
-    <label>Nome do Titular: <input type="text" id="nomeTitular"></label><br>
-    <label>Saldo: <input type="number" id="saldo" step="0.01"></label><br>
-    <label>Valor do Depósito: <input type="number" id="deposito" step="0.01"></label><br>
-    <label>Valor do Saque: <input type="number" id="saque" step="0.01"></label><br>
-    <button onclick="criarConta()">Criar Conta</button>
-    <button onclick="realizarDeposito()">Realizar Depósito</button>
-    <button onclick="realizarSaque()">Realizar Saque</button><br><br>
-    <div id="infoConta"></div>
 
-    <script src="questao2.js"></script>
+    NUMERO DA CONTA: <input type="number" id="nConta" name="nConta">
+    NOME: <input type="text" id="nome" name="nome">
+    SALDO: <input type="number" id="saldo" name="saldo">
+    VALOR: <input type="number" id="valor" name="valor">
+
+    <button onclick="realizarDepositar()">Realizar depósito</button>
+    <button onclick="realizarSaque()">Realizar saque</button>
+
+    <h3>Resultado</h3>
+    <div id="resultado">
+    </div>
+
     <script>
-        let conta;
-
-        function criarConta() {
-            const idConta = document.getElementById('idConta').value;
-            const nomeTitular = document.getElementById('nomeTitular').value;
-            const saldo = parseFloat(document.getElementById('saldo').value);
-
-            conta = new ContaBancaria(idConta, nomeTitular, saldo);
-            exibirInfoConta();
-        }
-
-        function realizarDeposito() {
-            const valorDeposito = parseFloat(document.getElementById('deposito').value);
-            conta.realizarDepositar(valorDeposito);
-            exibirInfoConta();
+        function realizarDepositar() {
+            let valor = document.getElementById("valor").value; 
+            let contabancaria = new ContaBancaria(); 
+            contabancaria.realizarDepositar(parseFloat(valor));
+            document.getElementById("resultado").innerHTML = "Valor depositado: " + valor;
         }
 
         function realizarSaque() {
-            const valorSaque = parseFloat(document.getElementById('saque').value);
-            conta.realizarSaque(valorSaque);
-            exibirInfoConta();
-        }
-
-        function exibirInfoConta() {
-            const infoConta = document.getElementById('infoConta');
-            infoConta.innerHTML = `
-                <p>ID da Conta: ${conta.getidConta()}</p>
-                <p>Nome do Titular: ${conta.getnomeTitular()}</p>
-                <p>Saldo: ${conta.getsaldo().toFixed(2)}</p>
-            `;
+            let valor = document.getElementById("valor").value; 
+            let contabancaria = new ContaBancaria(); 
+            contabancaria.realizarSaque(parseFloat(valor)); 
+            document.getElementById("resultado").innerHTML = "Valor sacado: " + valor;
         }
     </script>
+
 </body>
 </html>
