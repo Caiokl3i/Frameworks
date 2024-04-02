@@ -1,0 +1,25 @@
+
+
+<script>
+    function calcArea() {
+        let largura = document.getElementById("largura").value;
+        let altura = document.getElementById("altura").value;
+        let retangulo = new Retangulo(largura, altura);
+        let area = retangulo.calcArea();
+        document.getElementById("resultado").innerHTML = "Area:" + area;
+    }
+    function calcPerimetro() {
+        let largura = document.getElementById("largura").value;
+        let altura = document.getElementById("altura").value;
+        let retangulo = new Retangulo(largura, altura);
+        let perimetro = retangulo.calcPerimetro();
+        document.getElementById("resultado").innerHTML ="Perimetro:" + perimetro;
+    }
+</script>
+
+<!--
+    Função /
+    Pegar os elementos através do ID /
+    Criar um novo objeto /
+    Criar uma variavel para resultado da função / 
+-->
